@@ -3,7 +3,7 @@ This docker image is based on [minideb](https://github.com/bitnami/minideb), a m
 
 ## Supported architectures
 
-This multiarch image supports `amd64`, `arm64v8`, `ppc64le`, and `s390x` on Linux.
+This multiarch image supports `amd64` and `arm64v8` on Linux and `amd64` on Windows.
 
 ## Starting the container
 ### For Windows & Linux
@@ -42,4 +42,47 @@ services:
       - /path/to/your/configuration:/opt/picapport/.picapport
       - /path/to/your/fotos:/srv/photos
 ```
+Run it with `docker-compose up -d`
+
+## Docker-compose for use with traefik as proxy
+
+Enter your specific domain name in the labels section.
+
+```YAML
+version: '3'
+
+services:
+  picapport:
+    image: st3ff3n/picapport:latest
+    restart: always
+    environment:
+      - XMS=1g
+      - XMX=2g
+      - DTRACE=DEBUG
+      - LC_ALL=de_DE.UTF-8
+      - PICAPPORT_LANG=de
+
+    networks:
+      - default
+
+    volumes:
+      - /opt/containers/picapport/data:/opt/picapport/.picapport
+      - /opt/containers/picapport/fotos:/srv/photos
+      - /opt/containers/picapport/cache:/srv/cache
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.picapport-1.entrypoints=http"
+      - "traefik.http.routers.picapport-1.rule=Host(`example.com`)"  ## Enter the domain name ##
+      - "traefik.http.middlewares.picapport-1-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.picapport-1.middlewares=picapport-1-https-redirect"
+      - "traefik.http.routers.picapport-1-secure.entrypoints=https"
+      - "traefik.http.routers.picapport-1-secure.rule=Host(`example.com`)" ## Enter the domain name ##
+      - "traefik.http.routers.picapport-1-secure.tls=true"
+      - "traefik.http.routers.picapport-1-secure.tls.certresolver=http"
+      - "traefik.http.routers.picapport-1-secure.service=picapport-1"
+      - "traefik.http.services.picapport-1.loadbalancer.server.port=80"
+      - "traefik.docker.network=proxy"
+```
+
 Run it with `docker-compose up -d`
