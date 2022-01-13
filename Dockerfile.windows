@@ -1,0 +1,38 @@
+FROM winamd64/openjdk:11-jre-nanoserver
+
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VCS_URL
+ARG VERSION
+ARG ARCH=amd64
+
+ENV PICAPPORT_PORT=80
+ENV PICAPPORT_LANG=en
+ENV PICAPPORT_LOG=WARNING
+ENV XMS=1024m
+ENV XMX=4096m
+
+RUN mkdir /.picapport
+RUN mkdir /.picapport/plugins
+RUN mkdir /.picapport/groovy
+
+COPY ./picapport-headless.jar /picapport-headless.jar
+COPY ./PicApportVideoThumbnailPlugin.zip /.picapport/plugins/PicApportVideoThumbnailPlugin.zip
+COPY ./PicApportJavaImagePlugin.zip /.picapport/plugins/PicApportJavaImagePlugin.zip
+COPY ./apache-groovy-binary-3.0.9.zip /.picapport/groovy/apache-groovy-binary-3.0.9.zip
+COPY ./pagpMetadataAnalyser-1.1.0.zip /.picapport/groovy/pagpMetadataAnalyser-1.1.0.zip
+
+COPY ./config/picapport.properties /.picapport/picapport.properties
+
+EXPOSE $[PICAPPORT_PORT]
+
+ENTRYPOINT java -Xms$XMS -Xmx$XMX -DTRACE=$PICAPPORT_LOG -Duser.language=$PICAPPORT_LANG -Duser.home=/opt/picapport -jar picapport-headless.jar
+
+LABEL de.st3ff3n.picapport.version=$VERSION \
+    de.st3ff3n.picapport.name="PicApport" \
+    de.st3ff3n.picapport.docker.cmd="docker run -d -p 8080:80 st3ff3n/picapport" \
+    de.st3ff3n.picapport.vendor="Steffen Issler" \
+    de.st3ff3n.picapport.architecture=$ARCH \
+    de.st3ff3n.picapport.vcs-ref=$VCS_REF \
+    de.st3ff3n.picapport.vcs-url=$VCS_URL \
+    de.st3ff3n.picapport.build-date=$BUILD_DATE
