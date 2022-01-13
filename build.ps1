@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 $VERSION = type VERSION
-$VERSION = $VERSION -replace '\.','-'
+$DOWNLOAD_VERSION = $VERSION -replace '\.','-'
 
 $IMAGE = "bitnami/minideb:latest
 
@@ -11,6 +11,34 @@ $DATE = ([datetime]::now).toString("yyyy-MM-ddTHH:mm:ssZ")
 
 $VCS_REF = git rev-parse --short HEAD
 $VCS_URL = git config --get remote.origin.url
+
+Write-Host Startin donloading all needed picapport files
+
+Write-Host Download picapport server
+$url = "https://www.picapport.de/download/10-3.01/picapport-headless.jar"
+$dest = ".\picapport-headless.jar"
+Invoke-WebRequest -Uri $url -OutFile $dest
+
+Write-Host Download video thumbnail plugin
+$url = "https://www.picapport.de/plugins/downloads/PicApportVideoThumbnailPlugin.zip"
+$dest = ".\PicApportVideoThumbnailPlugin.zip"
+Invoke-WebRequest -Uri $url -OutFile $dest
+
+Write-Host Download video thumbnail plugin
+$url = "https://www.picapport.de/plugins/downloads/PicApportJavaImagePlugin.zip"
+$dest = ".\PicApportJavaImagePlugin.zip"
+Invoke-WebRequest -Uri $url -OutFile $dest
+
+Write-Host Download video thumbnail plugin
+$url = "https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips/apache-groovy-binary-3.0.9.zip"
+$dest = ".\apache-groovy-binary-3.0.9.zip"
+Invoke-WebRequest -Uri $url -OutFile $dest
+
+Write-Host Download video thumbnail plugin
+$url = "https://www.picapport.de/download/add-ons/pagpMetadataAnalyser-1.1.0.zip"
+$dest = ".\pagpMetadataAnalyser-1.1.0.zip"
+Invoke-WebRequest -Uri $url -OutFile $dest
+
 
 Write-Host Starting build
 
