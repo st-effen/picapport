@@ -48,7 +48,7 @@ Write-Host Excecute docker version
 
 docker version
 
-if($isWindows) {
+if ($isWindows) {
   Write-Host This is a windows build
   docker build -t picapport --build-arg BUILD_DATE=$DATE --build-arg VERSION=$VERSION --build-arg VCS_REF=$VCS_REF --build_arg VCS_URL=$VCS_URL -f Dockerfile.windows .
 } else {
