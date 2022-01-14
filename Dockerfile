@@ -27,7 +27,7 @@ ENV XMS 1024m
 ENV XMX 4096m
 
 # Install openjdk
-RUN apt-get update && apt-get upgrade -y && apt-get -y install openjdk-16-jre
+RUN apt-get update && apt-get upgrade -y && apt-get -y install openjdk-17-jre
 
 # Make needed directories
 RUN mkdir -p /opt/picapport && \
