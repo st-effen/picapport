@@ -24,7 +24,7 @@ COPY ./pagpMetadataAnalyser-1.1.0.zip /.picapport/groovy/pagpMetadataAnalyser-1.
 
 COPY ./config/picapport.properties /.picapport/picapport.properties
 
-EXPOSE $[PICAPPORT_PORT]
+EXPOSE ${PICAPPORT_PORT}
 
 ENTRYPOINT java -Xms$XMS -Xmx$XMX -DTRACE=$PICAPPORT_LOG -Duser.language=$PICAPPORT_LANG -Duser.home=/opt/picapport -jar picapport-headless.jar
 
