@@ -54,7 +54,7 @@ if ($isWindows) {
 } else {
   Write-Host This is a linux build
   docker run --rm --privileged "multiarch/qemu-user-static:register" --reset
-  docker build -t picapport --build-arg IMAGE="$env:ARCH/$IMAGE" --build-arg QEMU=$QEMU_ARCH --build-arg BUILD_DATE=$DATE --build-arg VERSION=$VERSION --build-arg "ARCH=$env:ARCH" --build-arg VCS_REF=$VCS_REF --build-arg VCS_URL=$VCS_URL -f Dockerfile .
+  docker build -t picapport --build-arg IMAGE=$IMAGE --build-arg QEMU=$QEMU_ARCH --build-arg BUILD_DATE=$DATE --build-arg VERSION=$VERSION --build-arg "ARCH=$env:ARCH" --build-arg VCS_REF=$VCS_REF --build-arg VCS_URL=$VCS_URL -f Dockerfile .
 }
 
 Write-Host Execute docker images to list all images
