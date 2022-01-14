@@ -16,9 +16,11 @@ Thereafter you can access picapport on http://localhost:8080
 Create a file `picapport.properties` and save it in a folder, e.g. `config`. You can specify all parameter described in the [Picapport server guide](http://wiki.picapport.de/display/PIC/PicApport-Server+Guide):
 ```
 server.port=80
+server.ssl=false
+user.log.access=true
+gui.enabled=false
+robot.root.0.id=photos
 robot.root.0.path=/srv/photos
-foto.jpg.usecache=2
-foto.jpg.cache.path=/srv/cache
 ```
 In this file we specified, e.g., the path for picapport to search for the pictures inside the docker container, and the path, where all cached photos are stored.
 
