@@ -24,17 +24,17 @@ $url = "https://www.picapport.de/plugins/downloads/PicApportVideoThumbnailPlugin
 $dest = ".\PicApportVideoThumbnailPlugin.zip"
 Invoke-WebRequest -Uri $url -OutFile $dest
 
-Write-Host Download video thumbnail plugin
+Write-Host Download java image plugin
 $url = "https://www.picapport.de/plugins/downloads/PicApportJavaImagePlugin.zip"
 $dest = ".\PicApportJavaImagePlugin.zip"
 Invoke-WebRequest -Uri $url -OutFile $dest
 
-Write-Host Download video thumbnail plugin
+Write-Host Download apache groovy binary
 $url = "https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips/apache-groovy-binary-3.0.9.zip"
 $dest = ".\apache-groovy-binary-3.0.9.zip"
 Invoke-WebRequest -Uri $url -OutFile $dest
 
-Write-Host Download video thumbnail plugin
+Write-Host Download meta data anylyser add-on
 $url = "https://www.picapport.de/download/add-ons/pagpMetadataAnalyser-1.1.0.zip"
 $dest = ".\pagpMetadataAnalyser-1.1.0.zip"
 Invoke-WebRequest -Uri $url -OutFile $dest
@@ -50,7 +50,7 @@ docker version
 
 if ($isWindows) {
   Write-Host This is a windows build
-  docker build -t picapport --build-arg BUILD_DATE=$DATE --build-arg VERSION=$VERSION --build-arg VCS_REF=$VCS_REF --build_arg VCS_URL=$VCS_URL -f Dockerfile.windows .
+  docker build -t picapport --build-arg BUILD_DATE=$DATE --build-arg VERSION=$VERSION --build-arg VCS_REF=$VCS_REF --build-arg VCS_URL=$VCS_URL -f Dockerfile.windows .
 } else {
   Write-Host This is a linux build
   docker run --rm --privileged "multiarch/qemu-user-static:register" --reset
