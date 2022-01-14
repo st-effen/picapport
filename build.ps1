@@ -15,7 +15,7 @@ $VCS_URL = git config --get remote.origin.url
 Write-Host Startin donloading all needed picapport files
 
 Write-Host Download picapport server
-$url = "https://www.picapport.de/download/10-3.01/picapport-headless.jar"
+$url = "https://www.picapport.de/download/$DOWNLOAD_VERSION/picapport-headless.jar"
 $dest = ".\picapport-headless.jar"
 Invoke-WebRequest -Uri $url -OutFile $dest
 
