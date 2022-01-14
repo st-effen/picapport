@@ -30,19 +30,20 @@ version: '3'
 
 services:
   picapport:
-    image: steffen/picapport
+    image: st3ff3n/picapport:latest
     restart: always
     expose:
       - 80
     environment:
-      - Xms=512m
+      - Xms=1g
       - Xmx=2g
+      - LC_ALL=de_DE.UTF-8
       - PICAPPORT_LANG=de
     networks:
-      - backend
+      - default
     volumes:
       - /path/to/your/configuration:/opt/picapport/.picapport
-      - /path/to/your/fotos:/srv/photos
+      - /path/to/your/photos:/srv/photos
 ```
 Run it with `docker-compose up -d`
 
@@ -68,9 +69,8 @@ services:
       - default
 
     volumes:
-      - /opt/containers/picapport/data:/opt/picapport/.picapport
-      - /opt/containers/picapport/fotos:/srv/photos
-      - /opt/containers/picapport/cache:/srv/cache
+      - /path/to/your/configuration:/opt/picapport/.picapport
+      - /path/to/your/photos:/srv/photos
 
     labels:
       - "traefik.enable=true"
