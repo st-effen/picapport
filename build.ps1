@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $VERSION = type VERSION
 $DOWNLOAD_VERSION = $VERSION -replace '\.','-'
 
-$IMAGE = "bitnami/minideb:latest
+$IMAGE = "bitnami/minideb:latest"
 
 $QEMU_ARCH = $env:ARCH -replace 'arn32.*','arm' -replace 'arm64.*','aarch64' -replace 'amd64','x86_64'
 
