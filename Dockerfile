@@ -4,6 +4,7 @@ ARG IMAGE=alpine:latest
 FROM alpine AS qemu
 ARG QEMU=x86_64
 ARG QEMU_VERSION=4.2.0-6
+ADD https://github.com/multiarch/qemu-user-static/releases/download/v${QEMU_VERSION}/qemu-${QEMU}-static /usr/bin/qemu-${QEMU}-static
 RUN chmod -x /usr/bin/qemu-${QEMU}-static
 
 # second image to deliver the picapport container
