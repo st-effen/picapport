@@ -13,8 +13,8 @@ ENV XMS=1024m
 ENV XMX=4096m
 
 RUN mkdir .picapport
-RUN mkdir .picapport/plugins
-RUN mkdir .picapport/groovy
+RUN mkdir .\.picapport\plugins
+RUN mkdir .\.picapport\groovy
 
 COPY ./picapport-headless.jar /picapport-headless.jar
 COPY ./PicApportVideoThumbnailPlugin.zip /.picapport/plugins/PicApportVideoThumbnailPlugin.zip
