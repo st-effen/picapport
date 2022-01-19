@@ -3,7 +3,7 @@ This docker image is based on [minideb](https://github.com/bitnami/minideb), a m
 
 ## Supported architectures
 
-This multiarch image supports `amd64` and `arm64v8` on Linux and `amd64` on Windows.
+This <!--multiarch--> image supports `amd64` <!--and `arm64v8`--> on Linux and `amd64` on Windows.
 
 ## Starting the container
 ### For Windows & Linux

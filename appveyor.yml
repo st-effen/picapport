@@ -7,12 +7,12 @@ image:
 environment:
   matrix:
     - ARCH: amd64
-    - ARCH: arm64v8
+    #- ARCH: arm64v8
 
-matrix:
-  exclude:
-    - image: Visual Studio 2019
-      ARCH: arm64v8
+#matrix:
+#  exclude:
+#    - image: Visual Studio 2019
+#      ARCH: arm64v8
 
 build_script:
   - ps: ./build.ps1
