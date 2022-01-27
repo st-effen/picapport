@@ -37,14 +37,14 @@ RUN mkdir -p /opt/picapport && \
     mkdir /opt/picapport/.picapport/groovy
 
 # Copy picapport files to container
-COPY ./picapport-headless.jar /opt/picapport/picapport-headless.jar
-COPY ./PicApportVideoThumbnailPlugin.zip /opt/picapport/.picapport/plugins/PicApportVideoThumbnailPlugin.zip
-COPY ./PicApportJavaImagePlugin.zip /opt/picapport/.picapport/plugins/PicApportJavaImagePlugin.zip
-COPY ./apache-groovy-binary-3.0.9.zip /opt/picapport/.picapport/groovy/apache-groovy-binary-3.0.9.zip
-COPY ./pagpMetadataAnalyser-1.1.0.zip /opt/picapport/.picapport/groovy/pagpMetadataAnalyser-1.1.0.zip
+#COPY ./picapport-headless.jar /opt/picapport/picapport-headless.jar
+#COPY ./PicApportVideoThumbnailPlugin.zip /opt/picapport/.picapport/plugins/PicApportVideoThumbnailPlugin.zip
+#COPY ./PicApportJavaImagePlugin.zip /opt/picapport/.picapport/plugins/PicApportJavaImagePlugin.zip
+#COPY ./apache-groovy-binary-3.0.9.zip /opt/picapport/.picapport/groovy/apache-groovy-binary-3.0.9.zip
+#COPY ./pagpMetadataAnalyser-1.1.0.zip /opt/picapport/.picapport/groovy/pagpMetadataAnalyser-1.1.0.zip
 
 # Copy default config file
-COPY ./config/picapport.properties /opt/picapport/.picapport/picapport.properties
+#COPY ./config/picapport.properties /opt/picapport/.picapport/picapport.properties
 
 WORKDIR /opt/picapport
 
