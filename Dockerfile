@@ -27,7 +27,7 @@ ENV XMS 2048m
 ENV XMX 4096m
 
 # Install openjdk
-RUN apt-get update && apt-get -y install openjdk-11-jre-headless locales
+RUN apt-get update && apt-get -y install openjdk-11-jre-headless locales locales-all
 
 # Set the locale
 RUN locale-gen en_US.UTF-8
