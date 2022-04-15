@@ -34,7 +34,7 @@ ENV XMS 2048m
 ENV XMX 4096m
 
 # Install openjdk
-RUN apt-get update && apt-get -y install openjdk-11-jre-headless
+RUN apt-get update && apt-get -y install openjdk-11-jre-headless locales
 
 # Make needed directories
 RUN mkdir -p /opt/picapport && \
