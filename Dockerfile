@@ -41,6 +41,12 @@ RUN mkdir -p /opt/picapport && \
     mkdir /opt/picapport/.picapport/plugins && \
     mkdir /opt/picapport/.picapport/groovy
 
+# Copy picapport files to container
+COPY ./picapport-headless.jar /opt/picapport/picapport-headless.jar
+
+# Copy default config file
+COPY ./config/picapport.properties /opt/picapport/.picapport/picapport.properties
+
 WORKDIR /opt/picapport
 
 EXPOSE ${PICAPPORT_PORT}
