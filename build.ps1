@@ -12,7 +12,7 @@ $DATE = ([datetime]::now).toString("yyyy-MM-ddTHH:mm:ssZ")
 $VCS_REF = git rev-parse --short HEAD
 $VCS_URL = git config --get remote.origin.url
 
-Write-Host Startin donloading all needed picapport files
+Write-Host Starting downloading all needed picapport files
 
 Write-Host Download picapport server
 $url = "https://www.picapport.de/download/$DOWNLOAD_VERSION/picapport-headless.jar"
