@@ -19,13 +19,6 @@ ARG VCS_REF
 ARG VCS_URL
 ARG VERSION
 
-# Set the locale
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
-
 # Environment variables for the container
 ENV PICAPPORT_PORT 80
 ENV PICAPPORT_LANG en
@@ -35,6 +28,12 @@ ENV XMX 4096m
 
 # Install openjdk
 RUN apt-get update && apt-get -y install openjdk-11-jre-headless locales
+
+# Set the locale
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # Make needed directories
 RUN mkdir -p /opt/picapport && \
