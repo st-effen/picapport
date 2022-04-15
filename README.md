@@ -1,12 +1,12 @@
 # Picapport in a docker container
-This docker image is based on [minideb](https://github.com/bitnami/minideb), a minimalistic debian image and has [picapport](https://www.picapport.de/de/index.php) installed. Also this image includes the PicApportVideoThumbnailPlugin, the PicApportJavaImagePlugin and the pagpMetadataAnalyser add-on.
+This docker image is based on [minideb](https://github.com/bitnami/minideb), a minimalistic debian image and has [picapport](https://www.picapport.de/de/index.php) installed. <!--Also this image includes the PicApportVideoThumbnailPlugin, the PicApportJavaImagePlugin and the pagpMetadataAnalyser add-on.-->
 
 ## Supported architectures
 
-This <!--multiarch--> image supports `amd64` <!--and `arm64v8`--> on Linux and `amd64` on Windows.
+This <!--multiarch--> image supports `amd64` <!--and `arm64v8`--> on Linux <!--and `amd64` on Windows-->.
 
 ## Starting the container
-### For Windows & Linux
+### For <!--Windows & -->Linux
 `docker run -d --name picapport -p 8080:80 ste3ff3n/picapport`
 
 Thereafter you can access picapport on http://localhost:8080
