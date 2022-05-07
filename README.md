@@ -1,6 +1,12 @@
 # Picapport in a docker container
 This docker image is based on [minideb](https://github.com/bitnami/minideb), a minimalistic debian image and has [picapport](https://www.picapport.de/de/index.php) installed. <!--Also this image includes the PicApportVideoThumbnailPlugin, the PicApportJavaImagePlugin and the pagpMetadataAnalyser add-on.-->
 
+## Image in Docker Hub
+Find the latest Image on [hub.docker.com](https://hub.docker.com/r/st3ff3n/picapport/)
+
+docker pull st3ff3n/picapport:latest
+
+
 ## Supported architectures
 
 This <!--multiarch--> image supports `amd64` <!--and `arm64v8`--> on Linux <!--and `amd64` on Windows-->.
