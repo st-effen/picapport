@@ -39,8 +39,8 @@ services:
     image: st3ff3n/picapport:latest
     restart: always
     stop_grace_period: 3m # wait time to stop to prevent rebuild of db
-    expose:
-      - 80
+    ports:
+      - 80:80
     environment:
       - Xms=1g
       - Xmx=2g
