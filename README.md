@@ -38,7 +38,7 @@ services:
   picapport:
     image: st3ff3n/picapport:latest
     restart: always
-    stop_grace_period: 3m # wait time to stop to prevent rebuild of db
+    stop_grace_period: 5m # wait time to stop to prevent rebuild of db
     ports:
       - 80:80
     environment:
@@ -65,7 +65,7 @@ services:
   picapport:
     image: st3ff3n/picapport:latest
     restart: always
-    stop_grace_period: 3m # wait time to stop to prevent rebuild of db
+    stop_grace_period: 5m # wait time to stop to prevent rebuild of db
     environment:
       - XMS=1g
       - XMX=2g
