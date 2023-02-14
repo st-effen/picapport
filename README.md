@@ -1,6 +1,8 @@
 # Picapport in a docker container
 This docker image is based on [minideb](https://github.com/bitnami/minideb), a minimalistic debian image and has [picapport](https://www.picapport.de/de/index.php) installed. <!--Also this image includes the PicApportVideoThumbnailPlugin, the PicApportJavaImagePlugin and the pagpMetadataAnalyser add-on.-->
 
+You can install the [PicapportVideoThumbnailPlugin](https://www.picapport.de/plugins/downloads/PicApportVideoThumbnailPlugin.zip) to the running docker container. 
+
 ## Image in Docker Hub
 Find the latest Image on [hub.docker.com](https://hub.docker.com/r/st3ff3n/picapport/)
 
