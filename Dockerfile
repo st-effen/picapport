@@ -1,16 +1,5 @@
-ARG IMAGE=alpine:latest
+FROM bitnami/minideb:jessie
 
-# first image to download qemu and make it executable
-FROM alpine AS qemu
-ARG QEMU=x86_64
-ARG QEMU_VERSION=4.2.0-6
-ADD https://github.com/multiarch/qemu-user-static/releases/download/v${QEMU_VERSION}/qemu-${QEMU}-static /usr/bin/qemu-${QEMU}-static
-RUN chmod -x /usr/bin/qemu-${QEMU}-static
-
-# second image to deliver the picapport container
-FROM ${IMAGE}
-ARG QEMU=x86_64
-COPY --from=qemu /usr/bin/qemu-${QEMU}-static /usr/bin/qemu-${QEMU}-static
 ARG ARCH=amd64
 
 # Args from the build command only for build
@@ -27,7 +16,7 @@ ENV XMS 2048m
 ENV XMX 4096m
 
 # Install openjdk
-RUN apt-get update && apt-get -y install openjdk-11-jre-headless locales locales-all
+RUN apt-get update && apt-get -y install openjdk-17-jre-headless locales locales-all
 
 # Set the locale
 RUN locale-gen en_US.UTF-8
@@ -44,16 +33,14 @@ RUN mkdir -p /opt/picapport && \
 # Copy picapport files to container
 COPY ./picapport-headless.jar /opt/picapport/picapport-headless.jar
 
-# Copy default config file
-COPY ./config/picapport.properties /opt/picapport/.picapport/picapport.properties
+# Copy start script to container
+COPY ./start_skript.sh /opt/picapport/start_skript.sh
 
 WORKDIR /opt/picapport
 
 EXPOSE ${PICAPPORT_PORT}
 
-#ENTRYPOINT java -Xms$XMS -Xmx$XMX -DTRACE=$PICAPPORT_LOG -Duser.language=$PICAPPORT_LANG -Duser.home=/opt/picapport -jar picapport-headless.jar
-
-CMD exec java -Xms$XMS -Xmx$XMX -Djava.awt.headless=true -DTRACE=$PICAPPORT_LOG -Duser.language=$PICAPPORT_LANG -Duser.home=/opt/picapport -jar picapport-headless.jar
+ENTRYPOINT /opt/picapport/pa-start.sh $PICAPPORT_PORT $PICAPPORT_LANG $XMS $XMX
 
 LABEL de.st3ff3n.picapport.version=$VERSION \
     de.st3ff3n.picapport.name="PicApport" \
